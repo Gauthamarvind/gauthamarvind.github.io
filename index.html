@@ -12,17 +12,16 @@
         .tech-font { font-family: 'Orbitron', sans-serif; }
         .neon-text { color: var(--neon); text-shadow: 0 0 15px rgba(0, 240, 255, 0.6); }
         
-        /* Interactive Particle Layer */
+        /* Particle Layer */
         #bg-canvas { position: fixed; top: 0; left: 0; z-index: 1; pointer-events: none; }
 
-        /* Section Background Images with Overlays */
+        /* Background Images */
         .bg-image-section { 
             position: relative; 
             background-size: cover; 
             background-position: center; 
             background-attachment: fixed;
         }
-        /* Mobile adjustment for background attachment */
         @media (max-width: 1024px) { .bg-image-section { background-attachment: scroll; } }
 
         .overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(2,2,2,0.9), rgba(2,2,2,0.7), rgba(2,2,2,0.9)); z-index: 0; }
@@ -49,7 +48,6 @@
         }
         .card-hex:hover { border-color: var(--neon); background: rgba(0, 240, 255, 0.1); transform: translateY(-5px); }
 
-        /* Modal Contact */
         #contact-modal { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); align-items: center; justify-content: center; padding: 20px; }
         .modal-box { border: 1px solid var(--neon); box-shadow: 0 0 30px rgba(0, 240, 255, 0.2); width: 100%; max-width: 500px; }
 
@@ -92,11 +90,11 @@
         </div>
     </div>
 
-    <!-- HERO SECTION (BPM AI IMAGE) -->
+    <!-- HERO SECTION -->
     <section class="bg-image-section min-h-screen flex flex-col justify-center px-6 md:px-20" style="background-image: url('https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=2000&auto=format&fit=crop');">
         <div class="overlay"></div>
         <div class="content-relative ai-reveal active">
-            <p class="tech-font text-[var(--neon)] text-[9px] md:text-xs mb-4 tracking-[0.5em]">LATEST UPLOAD: ENTERPRISE ARCHITECTURE</p>
+            <p class="tech-font text-[var(--neon)] text-[9px] md:text-xs mb-4 tracking-[0.5em]">SYSTEM STATUS: OPERATIONAL</p>
             <h1 class="hero-title tech-font text-5xl md:text-[80px] leading-none mb-6 font-black uppercase tracking-tighter">
                 Orchestrating <br> <span class="neon-text">Digital Value.</span>
             </h1>
@@ -113,7 +111,7 @@
             <h2 class="tech-font text-xl mb-12 uppercase tracking-widest text-gray-500 border-l-2 border-[var(--neon)] pl-4">About Me</h2>
             <div class="text-lg md:text-2xl text-gray-300 leading-relaxed space-y-8">
                 <p>
-                    I am a Process Excellence leader specializing in the synergy between human strategy and autonomous machine intelligence. With 9+ years across BFSI, E-commerce, and Life Sciences, I design audit-ready, high-performance workflows.
+                    I am a Process Excellence leader specializing in the synergy between human strategy and autonomous machine intelligence. With **a decade** across BFSI, E-commerce, and Life Sciences, I design audit-ready, high-performance workflows.
                 </p>
                 <p class="text-gray-500 text-lg">
                     I thrive on the curiosity to learn and the speed to adapt. My mission is to bridge the gap between legacy systems and the precision of AI-enabled operations.
@@ -122,7 +120,7 @@
         </div>
     </section>
 
-    <!-- KEY INITIATIVES (BPM THEME) -->
+    <!-- KEY INITIATIVES -->
     <section id="projects" class="py-32 px-6 md:px-20">
         <h2 class="tech-font text-3xl mb-20 text-right uppercase tracking-widest ai-reveal">Key Initiatives</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -158,7 +156,6 @@
             <div class="timeline-container">
                 <div class="timeline-line"></div>
 
-                <!-- Vertical Items -->
                 <div class="flex justify-between items-center w-full mb-24 ai-reveal timeline-item">
                     <div class="hidden md:block w-[45%]"></div>
                     <div class="timeline-dot"></div>
@@ -243,7 +240,7 @@
 
     <!-- FOOTER -->
     <footer class="p-16 text-center border-t border-white/5 bg-black">
-        <h2 class="tech-font text-xl mb-8 tracking-[0.2em] ai-reveal">GAUTHAMARVIND POONGUNRAN</h2>
+        <h2 class="tech-font text-xl mb-8 tracking-[0.2em] ai-reveal uppercase">Gauthamarvind Poongunran</h2>
         <button onclick="toggleModal()" class="text-[9px] uppercase tracking-[0.5em] text-[var(--neon)] hover:underline mb-12 block mx-auto ai-reveal">OPEN COMMAND CENTER</button>
         <p class="text-[8px] text-gray-800 uppercase tracking-[1em]">Intelligence • Performance • Strategy</p>
     </footer>
@@ -254,7 +251,6 @@
             modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
         }
 
-        // Section Reveal Observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
@@ -262,7 +258,6 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.ai-reveal').forEach(el => observer.observe(el));
 
-        // Background Particles
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
