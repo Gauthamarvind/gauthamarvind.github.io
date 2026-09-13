@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gauthamarvind | AI Orchestrator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --accent: #00f0ff; }
+        body { background-color: #000; color: #fff; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .lando-text { font-family: 'Syncopate', sans-serif; text-transform: uppercase; letter-spacing: -2px; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.4s ease; }
+        .glass:hover { border-color: var(--accent); background: rgba(0, 240, 255, 0.05); transform: translateY(-5px); }
+        .hero-gradient { background: linear-gradient(to right, #fff 20%, #444 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .stat-number { font-size: 4rem; font-weight: 900; line-height: 1; color: var(--accent); }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <!-- NAV -->
+    <nav class="fixed w-full z-50 p-6 flex justify-between items-center bg-black/50 backdrop-blur-md">
+        <div class="lando-text text-xl tracking-tighter">GAUTHAMARVIND</div>
+        <div class="space-x-8 hidden md:flex text-[10px] uppercase tracking-[0.3em] font-bold">
+            <a href="#work" class="hover:text-[var(--accent)]">Execution</a>
+            <a href="#ai" class="hover:text-[var(--accent)]">AI Stack</a>
+            <a href="mailto:kumar.gauthamarvind@gmail.com" class="px-4 py-2 border border-white hover:bg-white hover:text-black transition">Contact</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION (Lando Style) -->
+    <section class="min-h-screen flex flex-col justify-center px-6 md:px-20 pt-20">
+        <h1 class="lando-text text-6xl md:text-[120px] leading-none hero-gradient mb-8">
+            PROCESS <br> <span class="text-[var(--accent)]">INTELLIGENCE.</span>
+        </h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
+            <p class="text-xl md:text-2xl text-gray-400 font-light max-w-xl leading-relaxed">
+                9+ years of engineering high-performance business workflows. Now architecting 
+                <span class="text-white font-semibold italic">Agentic AI ecosystems</span> 
+                that bridge the gap between human strategy and autonomous execution.
+            </p>
+            <div class="flex flex-col space-y-2 text-[10px] uppercase tracking-[0.4em] text-gray-500">
+                <span>Based in Bengaluru, India</span>
+                <span>Current: Waters Corporation</span>
+                <span class="text-[var(--accent)] underline font-bold"><a href="https://linkedin.com/in/gauthamarvind-kumar/">LinkedIn Profile →</a></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS / METRICS GRID -->
+    <section class="py-20 px-6 md:px-20 border-y border-gray-900 bg-[#050505]">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-16 text-center md:text-left">
+            <div>
+                <div class="stat-number lando-text">160H</div>
+                <p class="uppercase text-[10px] tracking-widest text-gray-500 mt-4">Manual Effort Saved / Month</p>
+            </div>
+            <div>
+                <div class="stat-number lando-text">91%</div>
+                <p class="uppercase text-[10px] tracking-widest text-gray-500 mt-4">Search Precision Optimization</p>
+            </div>
+            <div>
+                <div class="stat-number lando-text">30+</div>
+                <p class="uppercase text-[10px] tracking-widest text-gray-500 mt-4">Global Processes Orchestrated</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI PROFICIENCY (The "Engine") -->
+    <section id="ai" class="py-32 px-6 md:px-20">
+        <h2 class="lando-text text-3xl mb-16 border-l-4 border-[var(--accent)] pl-6">The AI Tech Stack</h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="glass p-8">
+                <h3 class="font-bold text-xs uppercase tracking-widest text-[var(--accent)] mb-4">Agentic Design</h3>
+                <p class="text-sm text-gray-300">Agentic AI POC using <strong>Rollio (Celonis)</strong> to identify deviations & automate write-backs.</p>
+            </div>
+            <div class="glass p-8">
+                <h3 class="font-bold text-xs uppercase tracking-widest text-[var(--accent)] mb-4">Process Mining</h3>
+                <p class="text-sm text-gray-300">Expert in <strong>Celonis, SAP Signavio, & ARIS</strong> for digital twin modeling.</p>
+            </div>
+            <div class="glass p-8">
+                <h3 class="font-bold text-xs uppercase tracking-widest text-[var(--accent)] mb-4">Workflow AI</h3>
+                <p class="text-sm text-gray-300">Deployment of <strong>Atlassian Rovo & Copilot</strong> for intelligent intake management.</p>
+            </div>
+            <div class="glass p-8">
+                <h3 class="font-bold text-xs uppercase tracking-widest text-[var(--accent)] mb-4">LLM Strategy</h3>
+                <p class="text-sm text-gray-300">Orchestrating <strong>Claude & GPT-4</strong> for business-critical automation and prompt engineering.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS (The "Track") -->
+    <section id="work" class="py-32 px-6 md:px-20 bg-[#050505]">
+        <h2 class="lando-text text-3xl mb-16 text-right border-r-4 border-[var(--accent)] pr-6">High Performance Execution</h2>
+        
+        <div class="space-y-32">
+            <!-- Project 1 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="space-y-6">
+                    <span class="text-[var(--accent)] text-[10px] font-bold tracking-[0.5em] uppercase">Waters Corporation</span>
+                    <h3 class="lando-text text-4xl">Agentic AI Ecosystem</h3>
+                    <p class="text-gray-400 leading-relaxed">Pioneered a system to identify process deviations in real-time, engaging users via AI Agents for controlled source-system updates.</p>
+                    <div class="flex gap-4">
+                        <span class="text-[8px] border border-gray-700 px-3 py-1 uppercase">Celonis</span>
+                        <span class="text-[8px] border border-gray-700 px-3 py-1 uppercase">Human-in-the-loop</span>
+                    </div>
+                </div>
+                <div class="h-64 bg-gradient-to-br from-gray-800 to-black rounded-lg border border-gray-800 flex items-center justify-center text-gray-700 lando-text text-xs tracking-widest">
+                    [ AI AGENT ARCHITECTURE ]
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="h-64 bg-gradient-to-br from-gray-800 to-black rounded-lg border border-gray-800 flex items-center justify-center text-gray-700 lando-text text-xs tracking-widest md:order-1 order-2">
+                    [ 2,000+ CONTRACTS AUTOMATED ]
+                </div>
+                <div class="space-y-6 md:order-2 order-1">
+                    <span class="text-[var(--accent)] text-[10px] font-bold tracking-[0.5em] uppercase">Telstra ICC</span>
+                    <h3 class="lando-text text-4xl">Scale & Automation</h3>
+                    <p class="text-gray-400 leading-relaxed">Redesigned the Telstra Partner Program process, automating 2,000+ agreements and eliminating 160 manual hours per month via RPA.</p>
+                    <div class="flex gap-4">
+                        <span class="text-[8px] border border-gray-700 px-3 py-1 uppercase">SAP Signavio</span>
+                        <span class="text-[8px] border border-gray-700 px-3 py-1 uppercase">RPA</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS & CERTIFICATIONS -->
+    <section class="py-32 px-6 md:px-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+            <div>
+                <h3 class="lando-text text-xl mb-10 text-gray-500">Endorsements</h3>
+                <div class="space-y-12">
+                    <blockquote class="border-l-2 border-[var(--accent)] pl-8">
+                        <p class="text-lg italic text-gray-300">"Gauthamarvind is a visionary problem solver who blends technical AI depth with deep process understanding."</p>
+                        <footer class="mt-4 text-[10px] uppercase tracking-widest text-gray-500">— LinkedIn Endorsement</footer>
+                    </blockquote>
+                    <!-- PASTE MORE TESTIMONIALS HERE -->
+                </div>
+            </div>
+            <div>
+                <h3 class="lando-text text-xl mb-10 text-gray-500">Verification</h3>
+                <ul class="text-[10px] space-y-4 uppercase tracking-[0.2em] font-bold text-gray-400">
+                    <li class="flex justify-between border-b border-gray-900 pb-2"><span>Celonis Process Mgmt 2025</span><span class="text-[var(--accent)]">Verified</span></li>
+                    <li class="flex justify-between border-b border-gray-900 pb-2"><span>Lean Six Sigma Green Belt</span><span class="text-[var(--accent)]">AIGPE</span></li>
+                    <li class="flex justify-between border-b border-gray-900 pb-2"><span>SAP Signavio Manager</span><span class="text-[var(--accent)]">2024</span></li>
+                    <li class="flex justify-between border-b border-gray-900 pb-2"><span>Design Thinking Prof.</span><span class="text-[var(--accent)]">Tech M</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="p-20 text-center border-t border-gray-900 bg-[#050505]">
+        <div class="lando-text text-4xl md:text-8xl mb-10 opacity-10">POONGUNRAN</div>
+        <p class="text-[10px] tracking-[0.5em] text-gray-500 uppercase mb-8 font-bold">Available for Strategic AI Transformation Roles</p>
+        <a href="mailto:kumar.gauthamarvind@gmail.com" class="bg-[var(--accent)] text-black font-black px-12 py-5 lando-text text-xs tracking-widest hover:scale-110 transition inline-block">Execute Contact →</a>
+    </footer>
+
+</body>
+</html>
