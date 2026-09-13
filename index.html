@@ -5,224 +5,245 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gauthamarvind Poongunran | AI & Process Transformation</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root { --neon: #00f0ff; --dark: #050505; }
         body { background-color: var(--dark); color: #fff; font-family: 'Inter', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
         .tech-font { font-family: 'Orbitron', sans-serif; }
-        .neon-text { color: var(--neon); text-shadow: 0 0 10px rgba(0, 240, 255, 0.3); }
+        .neon-text { color: var(--neon); text-shadow: 0 0 15px rgba(0, 240, 255, 0.4); }
         
-        /* Grid Background */
-        .grid-bg { background-image: linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px); background-size: 60px 60px; }
+        /* Grid Background Animation */
+        .grid-bg { 
+            background-image: linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px); 
+            background-size: 60px 60px; 
+            background-attachment: fixed;
+        }
 
-        /* Vertical Timeline Animation */
-        .timeline-container { position: relative; max-width: 1000px; margin: 0 auto; }
-        .timeline-line { position: absolute; left: 50%; width: 2px; height: 100%; background: linear-gradient(to bottom, var(--neon), transparent); transform: translateX(-50%); }
-        .timeline-item { margin-bottom: 80px; position: relative; width: 100%; display: flex; justify-content: space-between; align-items: center; opacity: 0; transform: translateY(30px); transition: 0.6s all ease-out; }
-        .timeline-item.visible { opacity: 1; transform: translateY(0); }
-        .timeline-content { width: 42%; padding: 30px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 240, 255, 0.1); border-radius: 4px; position: relative; }
-        .timeline-dot { position: absolute; left: 50%; transform: translateX(-50%); width: 12px; height: 12px; background: var(--neon); border-radius: 50%; box-shadow: 0 0 15px var(--neon); z-index: 10; }
+        /* Fluid Animation Classes */
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
         
-        .card-hex { clip-path: polygon(5% 0, 100% 0, 100% 90%, 95% 100%, 0 100%, 0 10%); transition: 0.4s; background: rgba(255,255,255,0.02); border: 1px solid rgba(0, 240, 255, 0.1); }
-        .card-hex:hover { border-color: var(--neon); background: rgba(0, 240, 255, 0.05); }
+        .reveal-left { opacity: 0; transform: translateX(-50px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-left.active { opacity: 1; transform: translateX(0); }
+
+        .reveal-right { opacity: 0; transform: translateX(50px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-right.active { opacity: 1; transform: translateX(0); }
+
+        /* Timeline Styling */
+        .timeline-container { position: relative; max-width: 1000px; margin: 0 auto; }
+        .timeline-line { position: absolute; left: 50%; width: 2px; height: 100%; background: linear-gradient(to bottom, transparent, var(--neon), var(--neon), transparent); transform: translateX(-50%); }
+        .timeline-dot { position: absolute; left: 50%; transform: translateX(-50%); width: 14px; height: 14px; background: var(--neon); border-radius: 50%; box-shadow: 0 0 20px var(--neon); z-index: 10; transition: 0.3s; }
+        
+        .card-hex { 
+            background: rgba(255,255,255,0.02); 
+            border: 1px solid rgba(0, 240, 255, 0.1); 
+            clip-path: polygon(5% 0, 100% 0, 100% 90%, 95% 100%, 0 100%, 0 10%); 
+            transition: all 0.5s ease;
+        }
+        .card-hex:hover { border-color: var(--neon); background: rgba(0, 240, 255, 0.08); transform: scale(1.02); }
 
         @media (max-width: 768px) {
             .timeline-line { left: 20px; }
-            .timeline-content { width: 85%; margin-left: 50px; }
             .timeline-dot { left: 20px; }
-            .timeline-item { justify-content: flex-start; }
+            .reveal-left, .reveal-right { transform: translateY(30px); }
         }
     </style>
 </head>
 <body class="antialiased grid-bg">
 
     <!-- NAV -->
-    <nav class="fixed w-full z-50 p-6 flex justify-between items-center bg-black/80 backdrop-blur-md border-b border-white/5">
+    <nav class="fixed w-full z-50 p-6 flex justify-between items-center bg-black/80 backdrop-blur-xl border-b border-white/5">
         <div class="tech-font text-sm md:text-lg font-black tracking-widest neon-text">GAUTHAMARVIND POONGUNRAN</div>
         <div class="hidden lg:flex space-x-10 text-[10px] uppercase tracking-[0.4em] font-bold">
-            <a href="#about" class="hover:text-[var(--neon)]">Strategy</a>
-            <a href="#journey" class="hover:text-[var(--neon)]">Evolution</a>
-            <a href="#projects" class="hover:text-[var(--neon)]">Projects</a>
-            <a href="mailto:kumar.gauthamarvind@gmail.com" class="text-[var(--neon)] border border-[var(--neon)] px-4 py-1">Contact</a>
+            <a href="#about" class="hover:text-[var(--neon)] transition">About</a>
+            <a href="#projects" class="hover:text-[var(--neon)] transition">Initiatives</a>
+            <a href="#journey" class="hover:text-[var(--neon)] transition">Journey</a>
+            <a href="mailto:kumar.gauthamarvind@gmail.com" class="text-[var(--neon)] border border-[var(--neon)] px-6 py-2 hover:bg-[var(--neon)] hover:text-black transition duration-500">Contact</a>
         </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- HERO SECTION -->
     <section class="min-h-screen flex flex-col justify-center px-6 md:px-20 pt-20">
-        <h1 class="tech-font text-5xl md:text-[90px] leading-none mb-6 font-black uppercase tracking-tighter">
-            Architecting <br> <span class="neon-text">Value.</span>
-        </h1>
-        <p class="text-xl md:text-2xl text-gray-400 max-w-2xl font-light leading-relaxed">
-            Leading Enterprise-wide BPM practices with a focus on <span class="text-white font-semibold">Value Realization</span> and <span class="text-white font-semibold">Agentic AI</span> integration.
-        </p>
-    </section>
-
-    <!-- ABOUT SECTION -->
-    <section id="about" class="py-20 px-6 md:px-20">
-        <div class="max-w-4xl border-l-2 border-[var(--neon)] pl-8 md:pl-16">
-            <h2 class="tech-font text-2xl mb-8 uppercase tracking-widest text-gray-500">The Overview</h2>
-            <p class="text-lg md:text-xl text-gray-300 leading-relaxed space-y-6">
-                I am a Process Excellence and Strategic Transformation professional with 9+ years of experience across technology, telecommunications, BFSI, and e-commerce. My career is defined by a curiosity to learn and a rapid ability to adapt to complex business needs.
-                <br><br>
-                From influencing VPs and Senior Managers to facilitating cross-functional workshops, I bridge the gap between technical automation and business strategy. My mission is to drive the adoption of enterprise process management practices through the lens of digital transformation and AI-enabled optimization.
+        <div class="reveal">
+            <h1 class="tech-font text-5xl md:text-[100px] leading-none mb-6 font-black uppercase tracking-tighter">
+                Architecting <br> <span class="neon-text">Performance.</span>
+            </h1>
+            <p class="text-xl md:text-3xl text-gray-400 max-w-3xl font-light leading-relaxed">
+                Leading Enterprise-wide BPM with a focus on <span class="text-white font-semibold">Value Realization</span> and <span class="text-white font-semibold">Agentic AI.</span>
             </p>
         </div>
     </section>
 
-    <!-- PROJECT SECTION -->
-    <section id="projects" class="py-32 px-6 md:px-20 bg-black/40">
-        <h2 class="tech-font text-4xl mb-20 text-right uppercase tracking-widest">Key Initiatives</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="card-hex p-10">
-                <span class="tech-font text-[var(--neon)] text-[10px] tracking-widest uppercase">Waters Corporation</span>
-                <h3 class="text-2xl font-bold mt-4 mb-4 uppercase tech-font">PoC - Rollio</h3>
-                <p class="text-gray-400 text-sm leading-relaxed mb-6">Designed an agentic AI proof of concept using Rollio by Celonis to identify process deviations, engage users for human intervention, and enable controlled write-back to source systems.</p>
-                <div class="text-[9px] text-[var(--neon)] uppercase tracking-widest">Agentic AI • Process Intelligence</div>
-            </div>
-            <div class="card-hex p-10">
-                <span class="tech-font text-[var(--neon)] text-[10px] tracking-widest uppercase">Amazon</span>
-                <h3 class="text-2xl font-bold mt-4 mb-4 uppercase tech-font">Gemba Initiative</h3>
-                <p class="text-gray-400 text-sm leading-relaxed mb-6">Identified process improvement opportunities through deep Gemba dives. Supported implementation by collaborating with product teams to reduce 15,000 annual support contacts.</p>
-                <div class="text-[9px] text-[var(--neon)] uppercase tracking-widest">Root Cause Analysis • Gemba</div>
-            </div>
-            <div class="card-hex p-10">
-                <span class="tech-font text-[var(--neon)] text-[10px] tracking-widest uppercase">Telstra ICC</span>
-                <h3 class="text-2xl font-bold mt-4 mb-4 uppercase tech-font">Automation Initiative</h3>
-                <p class="text-gray-400 text-sm leading-relaxed mb-6">Redesigned the partner agreement process, migrating 2,000+ agreements and automating standard cases to save 160 manual business hours per month.</p>
-                <div class="text-[9px] text-[var(--neon)] uppercase tracking-widest">SAP Signavio • RPA Deployment</div>
-            </div>
-            <div class="card-hex p-10">
-                <span class="tech-font text-[var(--neon)] text-[10px] tracking-widest uppercase">Tech Mahindra</span>
-                <h3 class="text-2xl font-bold mt-4 mb-4 uppercase tech-font">BPMN Transformation</h3>
-                <p class="text-gray-400 text-sm leading-relaxed mb-6">Led process redesign initiatives and translated business requirements into BPMN 2.0 models using ARIS. Reduced hire onboarding time by 50% through structured training.</p>
-                <div class="text-[9px] text-[var(--neon)] uppercase tracking-widest">ARIS • Capability Building</div>
+    <!-- ABOUT ME -->
+    <section id="about" class="py-32 px-6 md:px-20">
+        <div class="max-w-4xl reveal-left">
+            <h2 class="tech-font text-2xl mb-8 uppercase tracking-widest text-gray-500">About Me</h2>
+            <div class="text-lg md:text-2xl text-gray-300 leading-relaxed space-y-8 border-l-2 border-[var(--neon)] pl-8 md:pl-16">
+                <p>
+                    I am a Process Excellence and Strategic Transformation leader with 9+ years of cross-industry expertise. My career is defined by a relentless curiosity and the ability to rapidly adapt to the high-stakes needs of global enterprises.
+                </p>
+                <p class="text-gray-500 text-lg">
+                    I bridge the gap between human strategy and technical execution, specializing in digital transformation, process intelligence, and the integration of AI-enabled optimization to drive measurable business value.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- VERTICAL ANIMATED JOURNEY -->
-    <section id="journey" class="py-32 px-6 md:px-20 overflow-hidden">
-        <h2 class="tech-font text-4xl mb-32 text-center uppercase tracking-widest">The Career Journey</h2>
+    <!-- KEY INITIATIVES (PROJECTS) -->
+    <section id="projects" class="py-32 px-6 md:px-20 bg-black/40">
+        <h2 class="tech-font text-4xl mb-20 text-right uppercase tracking-widest reveal-right">Key Initiatives</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <!-- Project 1 -->
+            <div class="card-hex p-10 reveal">
+                <span class="tech-font text-[var(--neon)] text-[10px] tracking-widest uppercase">Waters Corporation</span>
+                <h3 class="text-2xl font-bold mt-4 mb-4 uppercase tech-font">PoC - Rollio</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">Designed an agentic AI proof of concept to identify process deviations and enable autonomous write-back to source systems with human-in-the-loop governance.</p>
+                <div class="text-[9px] text-[var(--neon)] uppercase tracking-widest">Agentic AI • Process Intelligence</div>
+            </div>
+            <!-- Project 2 -->
+            <div class="card-hex p-10 reveal">
+                <span class="tech-font text-[var(--neon)] text-[10px] tracking-widest uppercase">Amazon</span>
+                <h3 class="text-2xl font-bold mt-4 mb-4 uppercase tech-font">Gemba Initiative</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">Optimized operational throughput by collaborating with product teams to eliminate 15,000 annual support contacts through deep Gemba-led root cause analysis.</p>
+                <div class="text-[9px] text-[var(--neon)] uppercase tracking-widest">Efficiency • Gemba</div>
+            </div>
+            <!-- Project 3 -->
+            <div class="card-hex p-10 reveal">
+                <span class="tech-font text-[var(--neon)] text-[10px] tracking-widest uppercase">Telstra ICC</span>
+                <h3 class="text-2xl font-bold mt-4 mb-4 uppercase tech-font">Automation Initiative</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">Redesigned partner agreement workflows, migrating 2,000+ contracts and automating standard cases to save 160 manual business hours per month.</p>
+                <div class="text-[9px] text-[var(--neon)] uppercase tracking-widest">SAP Signavio • RPA</div>
+            </div>
+            <!-- Project 4 -->
+            <div class="card-hex p-10 reveal">
+                <span class="tech-font text-[var(--neon)] text-[10px] tracking-widest uppercase">Tech Mahindra</span>
+                <h3 class="text-2xl font-bold mt-4 mb-4 uppercase tech-font">BPMN Transformation</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">Standardized BPMN 2.0 modeling across global functions and reduced onboarding time for 15+ hires by 50% through high-impact training programs.</p>
+                <div class="text-[9px] text-[var(--neon)] uppercase tracking-widest">ARIS • Change Management</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE CAREER JOURNEY (VERTICAL ANIMATED) -->
+    <section id="journey" class="py-32 px-6 md:px-20">
+        <h2 class="tech-font text-4xl mb-32 text-center uppercase tracking-widest reveal">The Career Journey</h2>
         
         <div class="timeline-container">
             <div class="timeline-line"></div>
 
             <!-- Waters -->
-            <div class="timeline-item flex-row-reverse">
+            <div class="flex justify-between items-center w-full mb-20 reveal-right">
+                <div class="hidden md:block w-[45%]"></div>
                 <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <span class="tech-font text-[var(--neon)] text-[10px]">2026 - Present</span>
+                <div class="w-full md:w-[45%] p-8 bg-white/5 border border-white/10 rounded">
+                    <span class="tech-font text-[var(--neon)] text-[10px]">2026 - PRESENT</span>
                     <h4 class="font-bold text-lg mt-2 uppercase">Waters Corporation</h4>
                     <p class="text-xs text-[var(--neon)] mb-3">Senior Business Process Analyst</p>
-                    <p class="text-xs text-gray-400">Leading enterprise process transformation and Agentic AI PoC orchestration.</p>
                 </div>
-                <div class="hidden md:block w-[42%]"></div>
             </div>
 
             <!-- Telstra -->
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
+            <div class="flex justify-between items-center w-full mb-20 reveal-left">
+                <div class="w-full md:w-[45%] p-8 bg-white/5 border border-white/10 rounded">
                     <span class="tech-font text-gray-500 text-[10px]">2023 - 2025</span>
                     <h4 class="font-bold text-lg mt-2 uppercase">Telstra ICC</h4>
                     <p class="text-xs text-[var(--neon)] mb-3">Process Specialist</p>
-                    <p class="text-xs text-gray-400">Automated partner agreements and optimized workflows via SAP Signavio.</p>
                 </div>
-                <div class="hidden md:block w-[42%]"></div>
+                <div class="timeline-dot"></div>
+                <div class="hidden md:block w-[45%]"></div>
             </div>
 
-            <!-- Tech Mahindra -->
-            <div class="timeline-item flex-row-reverse">
+            <!-- Tech M -->
+            <div class="flex justify-between items-center w-full mb-20 reveal-right">
+                <div class="hidden md:block w-[45%]"></div>
                 <div class="timeline-dot"></div>
-                <div class="timeline-content">
+                <div class="w-full md:w-[45%] p-8 bg-white/5 border border-white/10 rounded">
                     <span class="tech-font text-gray-500 text-[10px]">2022 - 2023</span>
                     <h4 class="font-bold text-lg mt-2 uppercase">Tech Mahindra</h4>
                     <p class="text-xs text-[var(--neon)] mb-3">Associate Consultant</p>
-                    <p class="text-xs text-gray-400">Led process redesign and BPMN 2.0 standardization using ARIS.</p>
                 </div>
-                <div class="hidden md:block w-[42%]"></div>
             </div>
 
             <!-- Wells Fargo -->
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
+            <div class="flex justify-between items-center w-full mb-20 reveal-left">
+                <div class="w-full md:w-[45%] p-8 bg-white/5 border border-white/10 rounded">
                     <span class="tech-font text-gray-500 text-[10px]">2020 - 2022</span>
                     <h4 class="font-bold text-lg mt-2 uppercase">Wells Fargo</h4>
                     <p class="text-xs text-[var(--neon)] mb-3">Process Engineer</p>
-                    <p class="text-xs text-gray-400">Focused on Quality Assurance and defect reduction in process modeling.</p>
                 </div>
-                <div class="hidden md:block w-[42%]"></div>
+                <div class="timeline-dot"></div>
+                <div class="hidden md:block w-[45%]"></div>
             </div>
 
             <!-- Walmart -->
-            <div class="timeline-item flex-row-reverse">
+            <div class="flex justify-between items-center w-full mb-20 reveal-right">
+                <div class="hidden md:block w-[45%]"></div>
                 <div class="timeline-dot"></div>
-                <div class="timeline-content">
+                <div class="w-full md:w-[45%] p-8 bg-white/5 border border-white/10 rounded">
                     <span class="tech-font text-gray-500 text-[10px]">2019 - 2020</span>
                     <h4 class="font-bold text-lg mt-2 uppercase">Walmart Global Tech</h4>
                     <p class="text-xs text-[var(--neon)] mb-3">Process Specialist</p>
-                    <p class="text-xs text-gray-400">Enhanced search precision from 65% to 91% for retail operations.</p>
                 </div>
-                <div class="hidden md:block w-[42%]"></div>
             </div>
 
             <!-- Amazon -->
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
+            <div class="flex justify-between items-center w-full mb-20 reveal-left">
+                <div class="w-full md:w-[45%] p-8 bg-white/5 border border-white/10 rounded">
                     <span class="tech-font text-gray-500 text-[10px]">2017 - 2019</span>
                     <h4 class="font-bold text-lg mt-2 uppercase">Amazon</h4>
                     <p class="text-xs text-[var(--neon)] mb-3">Sr. Customer Support</p>
-                    <p class="text-xs text-gray-400">Reduced annual support contacts by 15,000 via Gemba initiatives.</p>
                 </div>
-                <div class="hidden md:block w-[42%]"></div>
+                <div class="timeline-dot"></div>
+                <div class="hidden md:block w-[45%]"></div>
             </div>
         </div>
     </section>
 
-    <!-- TESTIMONIALS (REAL QUOTES) -->
-    <section class="py-32 px-6 md:px-20 border-t border-white/5">
-        <h2 class="tech-font text-2xl mb-16 text-gray-500 uppercase tracking-widest text-center">Validation</h2>
+    <!-- INDUSTRY LEADERS TESTIMONIALS -->
+    <section class="py-32 px-6 md:px-20 border-t border-white/5 bg-black/40">
+        <h2 class="tech-font text-2xl mb-16 text-gray-500 uppercase tracking-widest text-center reveal">What Industry Leaders Say About Me</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div class="p-8 border-t-2 border-[var(--neon)] bg-white/5">
-                <p class="text-gray-400 italic text-sm">"Gautham helped us make sense of some really complex business processes... finding smarter, simpler ways to get things done. He brings energy, curiosity, and care."</p>
-                <p class="text-[10px] uppercase tracking-widest mt-6 text-[var(--neon)] font-bold">— Skye Rugless, Marketing Leader @ Telstra</p>
+            <div class="p-8 border-t-2 border-[var(--neon)] bg-white/5 reveal">
+                <p class="text-gray-400 italic text-sm leading-relaxed">"Gautham helped us make sense of some really complex business processes — finding smarter, simpler ways to get things done. He brings energy, curiosity, and care to every project."</p>
+                <p class="text-[10px] uppercase tracking-widest mt-8 text-[var(--neon)] font-bold">— Skye Rugless, Marketing Leader @ Telstra</p>
             </div>
-            <div class="p-8 border-t-2 border-gray-700 bg-white/5">
-                <p class="text-gray-400 italic text-sm">"Expertise with SAP Signavio was consistently impressive. He has a rare ability to turn complex data into clear, actionable insights in process discovery sessions."</p>
-                <p class="text-[10px] uppercase tracking-widest mt-6 text-[var(--neon)] font-bold">— Dickson Manoj, BPM Manager @ Telstra</p>
+            <div class="p-8 border-t-2 border-gray-700 bg-white/5 reveal" style="transition-delay: 0.2s;">
+                <p class="text-gray-400 italic text-sm leading-relaxed">"Expertise with the SAP Signavio suite was consistently impressive. He has a rare ability to turn complex data into clear, actionable insights in process discovery sessions."</p>
+                <p class="text-[10px] uppercase tracking-widest mt-8 text-[var(--neon)] font-bold">— Dickson Manoj, BPM Manager @ Telstra</p>
             </div>
-            <div class="p-8 border-t-2 border-gray-700 bg-white/5">
-                <p class="text-gray-400 italic text-sm">"Consistently impressed me with his structured approach to problem-solving. His expertise in BPMN allowed him to implement solutions that drove measurable results."</p>
-                <p class="text-[10px] uppercase tracking-widest mt-6 text-[var(--neon)] font-bold">— Nuzhat Ismail, VP @ State Street</p>
+            <div class="p-8 border-t-2 border-gray-700 bg-white/5 reveal" style="transition-delay: 0.4s;">
+                <p class="text-gray-400 italic text-sm leading-relaxed">"I was consistently impressed with his structured approach to problem-solving. His expertise allowed him to identify inefficiencies quickly and drive measurable results."</p>
+                <p class="text-[10px] uppercase tracking-widest mt-8 text-[var(--neon)] font-bold">— Nuzhat Ismail, VP @ State Street</p>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer class="p-20 text-center border-t border-white/5 bg-black">
-        <h2 class="tech-font text-2xl mb-8 tracking-tighter">GAUTHAMARVIND POONGUNRAN</h2>
-        <div class="flex justify-center space-x-6 text-[10px] uppercase tracking-[0.4em] mb-10">
+        <h2 class="tech-font text-2xl mb-8 tracking-tighter reveal">GAUTHAMARVIND POONGUNRAN</h2>
+        <div class="flex justify-center space-x-8 text-[10px] uppercase tracking-[0.4em] mb-12 reveal">
             <a href="https://linkedin.com/in/gauthamarvind-kumar/" target="_blank" class="text-gray-500 hover:text-[var(--neon)] transition underline">LinkedIn</a>
             <a href="mailto:kumar.gauthamarvind@gmail.com" class="text-gray-500 hover:text-[var(--neon)] transition underline">Email</a>
         </div>
-        <p class="text-[8px] text-gray-700 uppercase tracking-[1em]">Operational Excellence x Agentic Intelligence</p>
+        <p class="text-[8px] text-gray-700 uppercase tracking-[1em]">Excellence • Intelligence • Strategy</p>
     </footer>
 
     <script>
-        // Simple Scroll Animation Observer
+        // Intersection Observer for Fluid Reveal
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.classList.add('active');
                 }
             });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.timeline-item').forEach(item => {
-            observer.observe(item);
+        }, { 
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px' 
         });
+
+        revealElements.forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
